@@ -1,0 +1,11 @@
+-- Role: flight_discover
+-- DROP ROLE IF EXISTS flight_discover;
+
+CREATE ROLE flight_discover WITH
+  LOGIN
+  SUPERUSER
+  INHERIT
+  CREATEDB
+  CREATEROLE
+  REPLICATION
+  ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:olm8qoMnyCgXko+t7xXGUg==$91Q8y4rD2ot0ifdaK61JVPWmxr4IATW+6nxq5/wpocs=:9lmKiyOiZMC88F8pHoT9vkiXN9Bx9Bv8OKbns4nAOSM=';
