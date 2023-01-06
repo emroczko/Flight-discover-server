@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS public.cities
     flights_number_to_city bigint,
     origin_cities_number bigint,
     destination_cities_number bigint,
+    total_connected_cities_number bigint,
     origin_countries_number bigint,
     destination_countries_number bigint,
     busiest_month_flights_from_city integer,
