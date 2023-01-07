@@ -1,4 +1,4 @@
-package com.tass.flightdiscover.domain;
+package com.tass.flightdiscover.domain.city;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

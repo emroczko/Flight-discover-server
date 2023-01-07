@@ -1,4 +1,4 @@
-package com.tass.flightdiscover.domain;
+package com.tass.flightdiscover.domain.flight;
 
 import jakarta.persistence.*;
 import lombok.Data;
