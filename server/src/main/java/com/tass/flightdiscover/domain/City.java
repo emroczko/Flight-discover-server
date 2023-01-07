@@ -1,11 +1,16 @@
 package com.tass.flightdiscover.domain;
 
-import javax.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cities")
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
