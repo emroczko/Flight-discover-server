@@ -1,2 +1,4 @@
 
 .DS_Store
+server/.gradle
+data_preparation/.idea
