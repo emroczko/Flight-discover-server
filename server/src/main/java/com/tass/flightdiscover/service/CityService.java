@@ -1,8 +1,7 @@
 package com.tass.flightdiscover.service;
 
 import com.tass.flightdiscover.converters.CityConversionService;
-import com.tass.flightdiscover.domain.City;
-import com.tass.flightdiscover.domain.CityResponse;
+import com.tass.flightdiscover.domain.city.CityResponse;
 import com.tass.flightdiscover.exceptions.CityNotFoundException;
 import com.tass.flightdiscover.repository.CityRepository;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 @Slf4j
