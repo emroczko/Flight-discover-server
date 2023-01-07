@@ -1,8 +1,6 @@
 package com.tass.flightdiscover.controller;
 
-import com.tass.flightdiscover.domain.City;
-import com.tass.flightdiscover.domain.CityResponse;
-import com.tass.flightdiscover.domain.FlightResponse;
+import com.tass.flightdiscover.domain.city.CityResponse;
 import com.tass.flightdiscover.exceptions.CityNotFoundException;
 import com.tass.flightdiscover.service.CityService;
 import lombok.AllArgsConstructor;
@@ -16,29 +14,24 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/cities")
 public class CityController {
 
     private final CityService cityService;
 
-    @GetMapping(value = "/getAllCities")
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public ResponseEntity<List<CityResponse>> getAllCities() {
         return ResponseEntity.ok(this.cityService.getCities());
     }
 
-    @GetMapping(value = "/getCity")
+    @RequestMapping(value = "/getByName", method = RequestMethod.GET)
     public ResponseEntity<CityResponse> getCity(String name) throws CityNotFoundException {
         log.info("Searching for city: {}", name);
         return ResponseEntity.ok(cityService.getCity(name));
     }
 
-    @GetMapping(value = "/getPopularCities")
+    @GetMapping(value = "/getPopularByRatio")
     public ResponseEntity<List<CityResponse>> getPopularCities(@RequestParam Double populationToFlightsRatio) {
         return ResponseEntity.ok(cityService.getPopularCities(populationToFlightsRatio));
-    }
-
-    @GetMapping(value = "/findFlight")
-    public ResponseEntity<List<FlightResponse>> findFlight(@RequestParam String from, @RequestParam String to) {
-        return ResponseEntity.ok(null);
     }
 }
