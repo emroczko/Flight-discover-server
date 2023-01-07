@@ -39,6 +39,9 @@ public class City {
     @Column(name = "destination_cities_number")
     private Long destinationCitiesNumber;
 
+    @Column(name = "total_connected_cities_number")
+    private Long totalConnectedCitiesNumber;
+
     @Column(name = "origin_countries_number")
     private Long originCountriesNumber;
 

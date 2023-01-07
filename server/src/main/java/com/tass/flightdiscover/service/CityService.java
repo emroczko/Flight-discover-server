@@ -16,4 +16,8 @@ public class CityService {
     public List<City> getCities() {
         return this.cityRepository.findAll();
     }
+
+    public List<City> getPopularCities(Double ratio) {
+        return cityRepository.findByTotalFlightsNumberForCityToPopulationRatioGreaterThanEqual(ratio);
+    }
 }
