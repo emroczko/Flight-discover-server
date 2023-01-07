@@ -3,7 +3,7 @@ FROM '/Users/erykmroczko/cities_data.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY flights(origin_city, destination_city, number_of_flights)
+COPY flights(origin_city, origin_country, destination_city, destination_country, number_of_flights)
 FROM '/Users/erykmroczko/Downloads/connections_data.csv'
 DELIMITER ','
 CSV HEADER;

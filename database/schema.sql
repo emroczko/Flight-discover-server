@@ -38,7 +38,9 @@ CREATE TABLE IF NOT EXISTS public.flights
 (
     id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
     origin_city character varying(255) COLLATE pg_catalog."default",
+    origin_country character varying(255) COLLATE pg_catalog."default",
     destination_city character varying(255) COLLATE pg_catalog."default",
+    destination_country character varying(255) COLLATE pg_catalog."default",
     number_of_flights bigint,
     CONSTRAINT flights_pkey PRIMARY KEY (id)
 )
