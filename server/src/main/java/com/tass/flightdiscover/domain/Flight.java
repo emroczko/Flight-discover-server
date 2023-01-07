@@ -14,9 +14,13 @@ public class Flight {
     @Column(name = "id")
     private Long id;
     @Column(name = "origin_city")
-    private String from;
+    private String originCity;
+    @Column(name = "origin_country")
+    private String originCountry;
     @Column(name = "destination_city")
-    private String to;
+    private String destinationCity;
+    @Column(name = "destination_country")
+    private String destinationCountry;
     @Column(name = "number_of_flights")
     private String count;
 }
