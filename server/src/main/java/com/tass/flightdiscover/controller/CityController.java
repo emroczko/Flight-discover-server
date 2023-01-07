@@ -25,4 +25,9 @@ public class CityController {
     public ResponseEntity<List<City>> getPopularCities(@RequestParam Double populationToFlightsRatio) {
         return ResponseEntity.ok(cityService.getPopularCities(populationToFlightsRatio));
     }
+
+    @GetMapping(value = "/findFlight")
+    public ResponseEntity<List<City>> findFlight(@RequestParam String from, @RequestParam String to) {
+        return ResponseEntity.ok(cityService.getCities());
+    }
 }
