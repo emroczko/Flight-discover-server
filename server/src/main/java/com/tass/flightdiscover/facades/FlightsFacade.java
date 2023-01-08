@@ -2,15 +2,13 @@ package com.tass.flightdiscover.facades;
 
 import com.tass.flightdiscover.domain.flight.ConnectionRequest;
 import com.tass.flightdiscover.domain.flight.FlightRequest;
-import com.tass.flightdiscover.domain.flight.FlightResponse;
+import com.tass.flightdiscover.domain.flight.Flight;
 import com.tass.flightdiscover.exceptions.BadRequestException;
-import com.tass.flightdiscover.exceptions.CityNotFoundException;
 import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.service.FlightsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -19,7 +17,7 @@ import java.util.stream.Stream;
 public class FlightsFacade {
     private final FlightsService flightsService;
 
-    public List<FlightResponse> getFlights(FlightRequest request) throws BadRequestException, FlightNotFoundException {
+    public List<Flight> getFlights(FlightRequest request) throws BadRequestException, FlightNotFoundException {
 
         var reversed = request.getReverse() != null ? request.getReverse() : false;
         var destination = reversed ? request.getFrom() : request.getTo();
@@ -35,7 +33,7 @@ public class FlightsFacade {
         throw new BadRequestException("Wrong set of parameters");
     }
 
-    public List<FlightResponse> getAllConnections(ConnectionRequest connectionRequest) throws FlightNotFoundException {
+    public List<Flight> getAllConnections(ConnectionRequest connectionRequest) throws FlightNotFoundException {
         var firstLocation = connectionRequest.getFirstLocation();
         var secondLocation = connectionRequest.getSecondLocation();
 

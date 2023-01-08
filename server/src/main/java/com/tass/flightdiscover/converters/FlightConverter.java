@@ -1,8 +1,8 @@
 package com.tass.flightdiscover.converters;
 
-import com.tass.flightdiscover.domain.flight.Location;
+import com.tass.flightdiscover.domain.flight.FlightsEntity;
 import com.tass.flightdiscover.domain.flight.Flight;
-import com.tass.flightdiscover.domain.flight.FlightResponse;
+import com.tass.flightdiscover.domain.flight.Location;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +10,28 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Service
-public class FlightConverter implements Converter<Flight, FlightResponse> {
+public class FlightConverter implements Converter<FlightsEntity, Flight> {
 
     @Override
-    public FlightResponse convert(Flight flight) {
-        return FlightResponse.builder()
+    public Flight convert(FlightsEntity flightsEntity) {
+        return Flight.builder()
                 .from(Location.builder()
-                        .city(flight.getOriginCity())
-                        .country(flight.getOriginCountry())
+                        .city(flightsEntity.getOriginCity())
+                        .country(flightsEntity.getOriginCountry())
                         .build())
                 .to(Location.builder()
-                        .city(flight.getDestinationCity())
-                        .country(flight.getDestinationCountry())
+                        .city(flightsEntity.getDestinationCity())
+                        .country(flightsEntity.getDestinationCountry())
                         .build())
-                .numberOfFlights(flight.getCount())
+                .numberOfFlights(flightsEntity.getCount())
                 .build();
     }
 
-    public List<FlightResponse> convertList(List<Flight> flights) {
-        return flights
+    public List<Flight> convertList(List<FlightsEntity> flightEntities) {
+        return flightEntities
                 .stream()
-                .flatMap(flight -> {
-                    var flightResponse = convert(flight);
+                .flatMap(flightsEntity -> {
+                    var flightResponse = convert(flightsEntity);
                     return flightResponse != null ? Stream.of(flightResponse) : Stream.empty();
                 })
                 .toList();
