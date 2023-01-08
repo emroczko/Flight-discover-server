@@ -5,7 +5,6 @@ import com.tass.flightdiscover.domain.flight.FlightRequest;
 import com.tass.flightdiscover.domain.flight.FlightResponse;
 import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.facades.FlightsFacade;
-import com.tass.flightdiscover.validators.RequestValidator;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
