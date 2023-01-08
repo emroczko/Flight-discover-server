@@ -1,6 +1,5 @@
 package com.tass.flightdiscover.domain.flight;
 
-import com.tass.flightdiscover.domain.Location;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

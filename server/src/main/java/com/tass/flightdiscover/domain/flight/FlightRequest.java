@@ -1,6 +1,5 @@
 package com.tass.flightdiscover.domain.flight;
 
-import com.tass.flightdiscover.domain.Location;
 import com.tass.flightdiscover.validators.RequestValidator;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;

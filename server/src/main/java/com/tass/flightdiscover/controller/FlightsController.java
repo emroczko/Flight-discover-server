@@ -3,6 +3,7 @@ package com.tass.flightdiscover.controller;
 import com.tass.flightdiscover.domain.flight.ConnectionRequest;
 import com.tass.flightdiscover.domain.flight.FlightRequest;
 import com.tass.flightdiscover.domain.flight.FlightResponse;
+import com.tass.flightdiscover.exceptions.BadRequestException;
 import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.facades.FlightsFacade;
 import jakarta.validation.Valid;
@@ -27,7 +28,7 @@ public class FlightsController {
     private final FlightsFacade flightsFacade;
 
     @RequestMapping(value = "/getByToAndFrom", method = RequestMethod.GET)
-    public ResponseEntity<List<FlightResponse>> findFlight(@Valid @ParameterObject FlightRequest request) throws FlightNotFoundException {
+    public ResponseEntity<List<FlightResponse>> findFlight(@Valid @ParameterObject FlightRequest request) throws FlightNotFoundException, BadRequestException {
         log.info("Find flight request {}", request);
         return ResponseEntity.ok(flightsFacade.getFlights(request));
     }

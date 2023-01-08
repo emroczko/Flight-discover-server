@@ -1,6 +1,6 @@
 package com.tass.flightdiscover.converters;
 
-import com.tass.flightdiscover.domain.Location;
+import com.tass.flightdiscover.domain.flight.Location;
 import com.tass.flightdiscover.domain.flight.Flight;
 import com.tass.flightdiscover.domain.flight.FlightResponse;
 import org.springframework.core.convert.converter.Converter;
