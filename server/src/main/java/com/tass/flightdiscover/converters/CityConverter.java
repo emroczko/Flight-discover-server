@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CityConversionService implements Converter<City, CityResponse> {
+public class CityConverter implements Converter<City, CityResponse> {
     @Override
     public CityResponse convert(City city) {
         return CityResponse.builder()

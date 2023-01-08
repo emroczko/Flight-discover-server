@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Service
-public class FlightConversionService implements Converter<Flight, FlightResponse> {
+public class FlightConverter implements Converter<Flight, FlightResponse> {
 
     @Override
     public FlightResponse convert(Flight flight) {
