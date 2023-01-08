@@ -1,6 +1,6 @@
 package com.tass.flightdiscover.domain.flight;
 
-import com.tass.flightdiscover.validators.RequestValidator;
+import com.tass.flightdiscover.validation.RequestValidator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

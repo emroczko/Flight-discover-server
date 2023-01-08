@@ -1,4 +1,4 @@
-package com.tass.flightdiscover.validators;
+package com.tass.flightdiscover.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
