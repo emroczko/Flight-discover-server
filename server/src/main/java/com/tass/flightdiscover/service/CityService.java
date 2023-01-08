@@ -26,18 +26,4 @@ public class CityService {
     public List<City> getCityByName(String name) {
         return cityConverter.convertList(cityRepository.findCityByName(name));
     }
-
-    public List<City> filterList() {
-        return Collections.emptyList();
-    }
-
-    public List<City> getPopularCities(Double ratio) {
-        return cityRepository.findByTotalFlightsNumberForCityToPopulationRatioGreaterThanEqual(ratio)
-                .stream()
-                .flatMap(city -> {
-                    var cityResponse = cityConverter.convert(city);
-                    return cityResponse != null ? Stream.of(cityResponse) : Stream.empty();
-                })
-                .toList();
-    }
 }
