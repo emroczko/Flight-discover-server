@@ -21,6 +21,13 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(value = Exception.class)
+    protected ResponseEntity<ErrorResponse> handleUnknownException(Exception ex) {
+        var message = "Internal error";
+        log.error(message, ex);
+        return new ResponseEntity<>(new ErrorResponse(message), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(value = BindException.class)
     protected ResponseEntity<ErrorResponse> handleException(BindException ex, WebRequest request) {
         var errors = ex.getBindingResult()
