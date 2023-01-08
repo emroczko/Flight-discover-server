@@ -13,9 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = CityNotFoundException.class)
-    protected ResponseEntity<ErrorResponse> handleConflict(CityNotFoundException ex, WebRequest request) {
-
+    @ExceptionHandler(value = {CityNotFoundException.class, FlightNotFoundException.class})
+    protected ResponseEntity<ErrorResponse> handleConflict(Exception ex) {
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 }
