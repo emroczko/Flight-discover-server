@@ -25,7 +25,10 @@ public class CityController {
     private final CityFacade cityFacade;
 
     @CitiesSwaggerConfiguration
-    @Operation(description = "Returns cities by multiple conditions given in request. Cities can be also sorted by multiple conditions")
+    @Operation(description = """
+            Returns cities by multiple conditions given in request. Cities can be also sorted by multiple conditions.
+            If no parameters passed it will return all cities.
+            """)
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ResponseEntity<List<City>> get(@ParameterObject CityRequest request) throws CityNotFoundException {
         log.info("City request: {}", request);
