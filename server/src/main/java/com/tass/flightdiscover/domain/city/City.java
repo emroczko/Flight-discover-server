@@ -1,10 +1,9 @@
 package com.tass.flightdiscover.domain.city;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cities")

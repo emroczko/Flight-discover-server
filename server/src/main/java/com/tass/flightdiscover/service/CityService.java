@@ -35,7 +35,7 @@ public class CityService {
                 .map(cityConversionService::convert)
                 .orElseThrow(() -> {
                     var message = "City %s not found!".formatted(name);
-                    log.info("City {} not found", name);
+                    log.info(message);
                     return new CityNotFoundException(message);
                 });
     }
