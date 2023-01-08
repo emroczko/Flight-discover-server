@@ -1,6 +1,6 @@
 package com.tass.flightdiscover.service;
 
-import com.tass.flightdiscover.converters.CityConversionService;
+import com.tass.flightdiscover.converters.CityConverter;
 import com.tass.flightdiscover.domain.city.CityResponse;
 import com.tass.flightdiscover.exceptions.CityNotFoundException;
 import com.tass.flightdiscover.repository.CityRepository;
@@ -16,23 +16,23 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public class CityService {
     private final CityRepository cityRepository;
-    private final CityConversionService cityConversionService;
+    private final CityConverter cityConverter;
 
     public List<CityResponse> getCities() {
         return cityRepository
                 .findAll()
                 .stream()
                 .flatMap(city -> {
-                    var cityResponse = cityConversionService.convert(city);
+                    var cityResponse = cityConverter.convert(city);
                     return cityResponse != null ? Stream.of(cityResponse) : Stream.empty();
                 })
                 .toList();
     }
 
-    public CityResponse getCity(String name) throws CityNotFoundException {
+    public CityResponse getCityByNameAndCountry(String name, String country) throws CityNotFoundException {
         return cityRepository
                 .findCityByName(name)
-                .map(cityConversionService::convert)
+                .map(cityConverter::convert)
                 .orElseThrow(() -> {
                     var message = "City %s not found!".formatted(name);
                     log.info(message);
@@ -44,7 +44,7 @@ public class CityService {
         return cityRepository.findByTotalFlightsNumberForCityToPopulationRatioGreaterThanEqual(ratio)
                 .stream()
                 .flatMap(city -> {
-                    var cityResponse = cityConversionService.convert(city);
+                    var cityResponse = cityConverter.convert(city);
                     return cityResponse != null ? Stream.of(cityResponse) : Stream.empty();
                 })
                 .toList();
