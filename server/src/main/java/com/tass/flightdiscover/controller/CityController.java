@@ -19,7 +19,6 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @AllArgsConstructor
-@CitiesSwaggerConfiguration
 @RequestMapping(value = "/cities")
 public class CityController {
 
