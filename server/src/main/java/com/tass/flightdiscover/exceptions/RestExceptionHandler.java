@@ -21,6 +21,11 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(value = BadRequestException.class)
+    protected ResponseEntity<ErrorResponse> handleException(BadRequestException ex) {
+        return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(value = Exception.class)
     protected ResponseEntity<ErrorResponse> handleUnknownException(Exception ex) {
         var message = "Internal error";
