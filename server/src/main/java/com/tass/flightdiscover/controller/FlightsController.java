@@ -2,8 +2,8 @@ package com.tass.flightdiscover.controller;
 
 import com.tass.flightdiscover.configuration.swagger.FlightsSwaggerConfiguration;
 import com.tass.flightdiscover.domain.flight.ConnectionRequest;
-import com.tass.flightdiscover.domain.flight.FlightRequest;
 import com.tass.flightdiscover.domain.flight.Flight;
+import com.tass.flightdiscover.domain.flight.FlightRequest;
 import com.tass.flightdiscover.exceptions.BadRequestException;
 import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.facades.FlightsFacade;

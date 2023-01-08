@@ -1,7 +1,7 @@
 package com.tass.flightdiscover.converters;
 
-import com.tass.flightdiscover.domain.flight.FlightsEntity;
 import com.tass.flightdiscover.domain.flight.Flight;
+import com.tass.flightdiscover.domain.flight.FlightsEntity;
 import com.tass.flightdiscover.domain.flight.Location;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
