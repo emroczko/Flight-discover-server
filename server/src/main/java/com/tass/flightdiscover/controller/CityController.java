@@ -29,7 +29,7 @@ public class CityController {
             Returns cities by multiple conditions given in request. Cities can be also sorted by multiple conditions.
             If no parameters passed it will return all cities.
             """)
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @GetMapping(value = "/get")
     public ResponseEntity<List<City>> get(@ParameterObject CityRequest request) throws CityNotFoundException {
         log.info("City request: {}", request);
         return ResponseEntity.ok(cityFacade.getCities(request));
@@ -37,7 +37,7 @@ public class CityController {
 
     @CitiesSwaggerConfiguration
     @Operation(description = "Returns cities of name given in parameter. Cities can be also sorted by multiple conditions")
-    @RequestMapping(value = "/getByName", method = RequestMethod.GET)
+    @GetMapping(value = "/getByName")
     public ResponseEntity<List<City>> get(@RequestParam @NotBlank(message = "Name field is required") String name) throws CityNotFoundException {
         log.info("Searching for city: {}", name);
         return ResponseEntity.ok(cityFacade.getCitiesByName(name));

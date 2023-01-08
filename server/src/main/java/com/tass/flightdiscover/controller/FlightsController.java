@@ -19,10 +19,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,7 +34,7 @@ public class FlightsController {
 
     @FlightsSwaggerConfiguration
     @Operation(description = "Returns flights from and to given locations. If only one is given (to or from) then it returns all available flights for given location.")
-    @RequestMapping(value = "/getByToAndFrom", method = RequestMethod.GET)
+    @GetMapping(value = "/getByToAndFrom")
     public ResponseEntity<List<Flight>> findFlight(@Valid @ParameterObject FlightRequest request) throws FlightNotFoundException, BadRequestException {
         log.info("Find flight request {}", request);
         return ResponseEntity.ok(flightsFacade.getFlights(request));
@@ -45,7 +42,7 @@ public class FlightsController {
 
     @FlightsSwaggerConfiguration
     @Operation(description = "Returns all connections between two locations and when locations are reversed")
-    @RequestMapping(value = "/getAllConnectionsBetween", method = RequestMethod.GET)
+    @GetMapping(value = "/getAllConnectionsBetween")
     public ResponseEntity<List<Flight>> getAllConnectionsBetween(@Valid @ParameterObject ConnectionRequest request) throws FlightNotFoundException {
         log.info("Check connections request {}", request);
         return ResponseEntity.ok(flightsFacade.getAllConnections(request));
