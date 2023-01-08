@@ -22,5 +22,5 @@ public class Flight {
     @Column(name = "destination_country")
     private String destinationCountry;
     @Column(name = "number_of_flights")
-    private String count;
+    private Long count;
 }
