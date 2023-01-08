@@ -16,8 +16,8 @@ public class CityRequest {
     private Long maxDestCitiesNumber;
     private Long minTotalConnectedCitiesNumber;
     private Long maxTotalConnectedCitiesNumber;
-    private Long minTotalFlightsToPopulationRatio;
-    private Long maxTotalFlightsToPopulationRatio;
+    private Double minTotalFlightsToPopulationRatio;
+    private Double maxTotalFlightsToPopulationRatio;
     private Sort sortBy;
     private SortOrder sortOrder;
     private Long limit;
