@@ -3,6 +3,9 @@ package com.tass.flightdiscover.facades;
 import com.tass.flightdiscover.domain.flight.ConnectionRequest;
 import com.tass.flightdiscover.domain.flight.FlightRequest;
 import com.tass.flightdiscover.domain.flight.FlightResponse;
+import com.tass.flightdiscover.exceptions.BadRequestException;
+import com.tass.flightdiscover.exceptions.CityNotFoundException;
+import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.service.FlightsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,29 +19,37 @@ import java.util.stream.Stream;
 public class FlightsFacade {
     private final FlightsService flightsService;
 
-    public List<FlightResponse> getFlights(FlightRequest request) {
+    public List<FlightResponse> getFlights(FlightRequest request) throws BadRequestException, FlightNotFoundException {
 
         var reversed = request.getReverse() != null ? request.getReverse() : false;
         var destination = reversed ? request.getFrom() : request.getTo();
         var source = reversed ? request.getTo() : request.getFrom();
 
-        if (source == null && destination != null) {
-            return flightsService.getFlightsByDestinationLocation(request.getTo());
-        } else if (destination == null && source != null) {
-            return flightsService.getFlightsByOriginLocation(request.getFrom());
+        if (source != null && destination != null) {
+            return throwIfEmpty(flightsService.getFlightsByOriginAndDestinationLocation(source, destination));
+        } else if (destination != null) {
+            return throwIfEmpty(flightsService.getFlightsByDestinationLocation(destination));
         } else if (source != null) {
-            return flightsService.getFlightsByOriginAndDestinationLocation(source, destination);
+            return throwIfEmpty(flightsService.getFlightsByOriginLocation(source));
         }
-        return Collections.emptyList();
+        throw new BadRequestException("Wrong set of parameters");
     }
 
-    public List<FlightResponse> getAllConnections(ConnectionRequest connectionRequest) {
+    public List<FlightResponse> getAllConnections(ConnectionRequest connectionRequest) throws FlightNotFoundException {
         var firstLocation = connectionRequest.getFirstLocation();
         var secondLocation = connectionRequest.getSecondLocation();
 
-        return Stream.concat(
-                flightsService.getFlightsByOriginAndDestinationLocation(firstLocation, secondLocation).stream(),
-                flightsService.getFlightsByOriginAndDestinationLocation(secondLocation, firstLocation).stream()
-        ).toList();
+        return throwIfEmpty(
+                Stream.concat(
+                        flightsService.getFlightsByOriginAndDestinationLocation(firstLocation, secondLocation).stream(),
+                        flightsService.getFlightsByOriginAndDestinationLocation(secondLocation, firstLocation).stream()
+                ).toList());
+    }
+
+    private <T> List<T> throwIfEmpty(List<T> list) throws FlightNotFoundException {
+        if (list.isEmpty()) {
+            throw new FlightNotFoundException("No flights found for given locations!");
+        }
+        return list;
     }
 }
