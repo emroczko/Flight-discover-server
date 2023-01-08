@@ -8,6 +8,7 @@ import com.tass.flightdiscover.facades.FlightsFacade;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +27,13 @@ public class FlightsController {
     private final FlightsFacade flightsFacade;
 
     @RequestMapping(value = "/getByToAndFrom", method = RequestMethod.GET)
-    public ResponseEntity<List<FlightResponse>> findFlight(@Valid FlightRequest request) throws FlightNotFoundException {
+    public ResponseEntity<List<FlightResponse>> findFlight(@Valid @ParameterObject FlightRequest request) throws FlightNotFoundException {
         log.info("Find flight request {}", request);
         return ResponseEntity.ok(flightsFacade.getFlights(request));
     }
 
     @RequestMapping(value = "/getAllConnectionsBetween", method = RequestMethod.GET)
-    public ResponseEntity<List<FlightResponse>> getAllConnectionsBetween(@Valid ConnectionRequest request) throws FlightNotFoundException {
+    public ResponseEntity<List<FlightResponse>> getAllConnectionsBetween(@Valid @ParameterObject ConnectionRequest request) throws FlightNotFoundException {
         log.info("Check connections request {}", request);
         return ResponseEntity.ok(flightsFacade.getAllConnections(request));
     }
