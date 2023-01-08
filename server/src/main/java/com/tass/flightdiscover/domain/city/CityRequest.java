@@ -1,11 +1,11 @@
 package com.tass.flightdiscover.domain.city;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import lombok.Data;
 
 @Data
 public class CityRequest {
-    private String name;
-    private String country;
     private Long minPopulation;
     private Long maxPopulation;
     private Long minFlightsNumberFromCity;
@@ -22,4 +22,5 @@ public class CityRequest {
     private Long maxTotalFlightsToPopulationRatio;
     private Sort sortBy;
     private SortOrder sortOrder;
+    private Long limit;
 }

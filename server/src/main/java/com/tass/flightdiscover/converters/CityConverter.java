@@ -1,32 +1,46 @@
 package com.tass.flightdiscover.converters;
 
 import com.tass.flightdiscover.domain.city.City;
-import com.tass.flightdiscover.domain.city.CityResponse;
+import com.tass.flightdiscover.domain.city.CityEntity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 @Service
-public class CityConverter implements Converter<City, CityResponse> {
+public class CityConverter implements Converter<CityEntity, City> {
     @Override
-    public CityResponse convert(City city) {
-        return CityResponse.builder()
-                .name(city.getName())
-                .cityLocationX(city.getCityLocationX())
-                .cityLocationY(city.getCityLocationY())
-                .countryName(city.getCountryName())
-                .cityPopulation(city.getCityPopulation())
-                .flightsNumberFromCity(city.getFlightsNumberFromCity())
-                .flightsNumberToCity(city.getFlightsNumberToCity())
-                .originCitiesNumber(city.getOriginCitiesNumber())
-                .destinationCitiesNumber(city.getDestinationCitiesNumber())
-                .totalConnectedCitiesNumber(city.getTotalConnectedCitiesNumber())
-                .originCountriesNumber(city.getOriginCountriesNumber())
-                .destinationCountriesNumber(city.getDestinationCountriesNumber())
-                .busiestMonthFlightsFromCity(city.getBusiestMonthFlightsFromCity())
-                .busiestMonthFlightsToCity(city.getBusiestMonthFlightsToCity())
-                .flightsNumberFromCityToPopulationRatio(city.getFlightsNumberFromCityToPopulationRatio())
-                .flightsNumberToCityToPopulationRatio(city.getFlightsNumberToCityToPopulationRatio())
-                .totalFlightsNumberForCityToPopulationRatio(city.getTotalFlightsNumberForCityToPopulationRatio())
+    public City convert(CityEntity cityEntity) {
+        return City.builder()
+                .name(cityEntity.getName())
+                .cityLocationX(cityEntity.getCityLocationX())
+                .cityLocationY(cityEntity.getCityLocationY())
+                .countryName(cityEntity.getCountryName())
+                .cityPopulation(cityEntity.getCityPopulation())
+                .flightsNumberFromCity(cityEntity.getFlightsNumberFromCity())
+                .flightsNumberToCity(cityEntity.getFlightsNumberToCity())
+                .totalFlightsNumber(cityEntity.getFlightsNumberToCity() + cityEntity.getFlightsNumberFromCity())
+                .originCitiesNumber(cityEntity.getOriginCitiesNumber())
+                .destinationCitiesNumber(cityEntity.getDestinationCitiesNumber())
+                .totalConnectedCitiesNumber(cityEntity.getTotalConnectedCitiesNumber())
+                .originCountriesNumber(cityEntity.getOriginCountriesNumber())
+                .destinationCountriesNumber(cityEntity.getDestinationCountriesNumber())
+                .busiestMonthFlightsFromCity(cityEntity.getBusiestMonthFlightsFromCity())
+                .busiestMonthFlightsToCity(cityEntity.getBusiestMonthFlightsToCity())
+                .flightsNumberFromCityToPopulationRatio(cityEntity.getFlightsNumberFromCityToPopulationRatio())
+                .flightsNumberToCityToPopulationRatio(cityEntity.getFlightsNumberToCityToPopulationRatio())
+                .totalFlightsNumberForCityToPopulationRatio(cityEntity.getTotalFlightsNumberForCityToPopulationRatio())
                 .build();
+    }
+
+    public List<City> convertList(List<CityEntity> cities) {
+        return cities
+                .stream()
+                .flatMap(cityEntity -> {
+                    var cityResponse = convert(cityEntity);
+                    return cityResponse != null ? Stream.of(cityResponse) : Stream.empty();
+                })
+                .toList();
     }
 }
