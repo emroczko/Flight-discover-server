@@ -31,9 +31,9 @@ public class SortingService {
         return cities.stream()
                 .sorted((c1, c2) -> switch (order) {
                     case ASC ->
-                            (int) (c1.getFlightsNumberToCityToPopulationRatio() - c2.getFlightsNumberToCityToPopulationRatio());
+                            Double.compare(c1.getFlightsNumberToCityToPopulationRatio(), c2.getFlightsNumberToCityToPopulationRatio());
                     case DESC ->
-                            (int) (c2.getFlightsNumberToCityToPopulationRatio() - c1.getFlightsNumberToCityToPopulationRatio());
+                            Double.compare(c2.getFlightsNumberToCityToPopulationRatio(), c1.getFlightsNumberToCityToPopulationRatio());
                 })
                 .toList();
     }

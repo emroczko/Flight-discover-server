@@ -27,7 +27,7 @@ public class CityFacade {
     public List<City> getCities(CityRequest request) throws CityNotFoundException {
 
         var sort = request.getSortBy();
-        var sortOrder = request.getSortOrder() == null ? SortOrder.ASC : SortOrder.DESC;
+        var sortOrder = request.getSortOrder() == null ? SortOrder.ASC : request.getSortOrder();
         var limit = request.getLimit();
         var predicates = predicateService.createPredicatesFromRequest(request);
         var cities = cityService.getAllCities()
