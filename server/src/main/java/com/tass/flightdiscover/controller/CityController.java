@@ -36,7 +36,7 @@ public class CityController {
     }
 
     @CitiesSwaggerConfiguration
-    @Operation(description = "Returns cities of name given in parameter. Cities can be also sorted by multiple conditions")
+    @Operation(description = "Returns cities of name given in parameter")
     @GetMapping(value = "/getByName")
     public ResponseEntity<List<City>> get(@RequestParam @NotBlank(message = "Name field is required") String name) throws CityNotFoundException {
         log.info("Searching for city: {}", name);
