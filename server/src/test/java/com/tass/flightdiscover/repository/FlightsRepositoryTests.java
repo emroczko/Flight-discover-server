@@ -9,16 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
 class FlightsRepositoryTests {
 
+    private static List<FlightsEntity> expectedFlights;
     @Autowired
     private FlightsRepository flightsRepository;
-
-    private static List<FlightsEntity> expectedFlights;
 
     @BeforeAll
     static void prepareData() {

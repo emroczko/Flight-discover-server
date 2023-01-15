@@ -1,7 +1,6 @@
 package com.tass.flightdiscover.controller;
 
 import com.tass.flightdiscover.configuration.swagger.FlightsSwaggerConfiguration;
-import com.tass.flightdiscover.domain.ErrorResponse;
 import com.tass.flightdiscover.domain.flight.ConnectionRequest;
 import com.tass.flightdiscover.domain.flight.Flight;
 import com.tass.flightdiscover.domain.flight.FlightRequest;
@@ -9,17 +8,15 @@ import com.tass.flightdiscover.exceptions.BadRequestException;
 import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.facades.FlightsFacade;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

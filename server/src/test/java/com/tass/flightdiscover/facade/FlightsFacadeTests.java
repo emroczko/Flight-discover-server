@@ -4,7 +4,6 @@ import com.tass.flightdiscover.domain.flight.ConnectionRequest;
 import com.tass.flightdiscover.domain.flight.FlightRequest;
 import com.tass.flightdiscover.domain.flight.Location;
 import com.tass.flightdiscover.exceptions.BadRequestException;
-import com.tass.flightdiscover.exceptions.CityNotFoundException;
 import com.tass.flightdiscover.exceptions.FlightNotFoundException;
 import com.tass.flightdiscover.facades.FlightsFacade;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class FlightsFacadeTests {
@@ -82,7 +80,7 @@ class FlightsFacadeTests {
                 .build();
 
         var exception = assertThrows(FlightNotFoundException.class,
-                () ->  flightsFacade.getFlights(flightRequest));
+                () -> flightsFacade.getFlights(flightRequest));
 
         var expectedMessage = "No flights found for given locations!";
         var actualMessage = exception.getMessage();
@@ -136,7 +134,7 @@ class FlightsFacadeTests {
                 .build();
 
         var exception = assertThrows(FlightNotFoundException.class,
-                () ->  flightsFacade.getAllConnections(connectionRequest));
+                () -> flightsFacade.getAllConnections(connectionRequest));
 
         var expectedMessage = "No flights found for given locations!";
         var actualMessage = exception.getMessage();

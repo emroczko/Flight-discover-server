@@ -57,7 +57,7 @@ public class FlightsConverterTests {
 
     @Test
     void testListConvert() {
-            var converted = flightConverter.convertList(flightsEntities);
-            assertEquals(flights, converted);
+        var converted = flightConverter.convertList(flightsEntities);
+        assertEquals(flights, converted);
     }
 }
