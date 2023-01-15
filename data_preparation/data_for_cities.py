@@ -7,7 +7,7 @@ import math
 FLIGHTS_FILEPATH = 'data/raw/flights.csv'
 FLIGHTS_FILE_COLUMNS = ['MONTH', 'DAY_OF_WEEK', 'ORIGIN_AIRPORT', 'DESTINATION_AIRPORT']
 AIRPORTS_FILEPATH = 'data/raw/airports.csv'
-AIRPORTS_FILE_COLUMNS = ['Name', 'City', 'Country', 'IATA', 'Longitude', 'Latitude']
+AIRPORTS_FILE_COLUMNS = ['City', 'Country', 'IATA', 'Longitude', 'Latitude']
 CITIES_FILEPATH = 'data/raw/worldcities.csv'
 CITIES_FILE_COLUMNS = ['city', 'country', 'population', 'lng', 'lat']
 
@@ -22,7 +22,7 @@ cities_df.rename(
     inplace=True)
 
 airports_df = pd.read_csv(AIRPORTS_FILEPATH, usecols=AIRPORTS_FILE_COLUMNS).dropna()
-airports_df.rename(columns={'Name': 'AIRPORT_NAME', 'City': 'CITY', 'Country': 'COUNTRY', 'Longitude': 'AIRPORT_X',
+airports_df.rename(columns={'City': 'CITY', 'Country': 'COUNTRY', 'Longitude': 'AIRPORT_X',
                             'Latitude': 'AIRPORT_Y'}, inplace=True)
 
 airports_df = pd.merge(airports_df, cities_df, on=['CITY', 'COUNTRY'])
@@ -40,13 +40,13 @@ flights_df.rename(columns={'ORIGIN_AIRPORT': 'ORIGIN_AIRPORT_IATA', 'DESTINATION
 
 flights_df = pd.merge(flights_df, airports_df, left_on=['ORIGIN_AIRPORT_IATA'], right_on=['IATA'])
 flights_df.rename(
-    columns={'AIRPORT_NAME': 'ORIGIN_AIRPORT_NAME', 'AIRPORT_X': 'ORIGIN_AIRPORT_X', 'AIRPORT_Y': 'ORIGIN_AIRPORT_Y',
+    columns={'AIRPORT_X': 'ORIGIN_AIRPORT_X', 'AIRPORT_Y': 'ORIGIN_AIRPORT_Y',
              'CITY': 'ORIGIN_CITY', 'CITY_X': 'ORIGIN_CITY_X', 'CITY_Y': 'ORIGIN_CITY_Y', 'COUNTRY': 'ORIGIN_COUNTRY',
              'CITY_POPULATION': 'ORIGIN_CITY_POPULATION'}, inplace=True)
 flights_df = flights_df.drop(['IATA'], axis=1)
 
 flights_df = pd.merge(flights_df, airports_df, left_on=['DESTINATION_AIRPORT_IATA'], right_on=['IATA'])
-flights_df.rename(columns={'AIRPORT_NAME': 'DESTINATION_AIRPORT_NAME', 'AIRPORT_X': 'DESTINATION_AIRPORT_X',
+flights_df.rename(columns={'AIRPORT_X': 'DESTINATION_AIRPORT_X',
                            'AIRPORT_Y': 'DESTINATION_AIRPORT_Y', 'CITY': 'DESTINATION_CITY',
                            'CITY_X': 'DESTINATION_CITY_X', 'CITY_Y': 'DESTINATION_CITY_Y',
                            'COUNTRY': 'DESTINATION_COUNTRY', 'CITY_POPULATION': 'DESTINATION_CITY_POPULATION'},
