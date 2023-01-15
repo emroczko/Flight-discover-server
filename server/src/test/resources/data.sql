@@ -6,6 +6,7 @@ INSERT INTO CITIES (id, name, city_location_y, city_location_x, country_name, ci
 INSERT INTO CITIES (id, name, city_location_y, city_location_x, country_name, city_population, flights_number_from_city, flights_number_to_city, origin_cities_number, destination_cities_number, total_connected_cities_number, origin_countries_number, destination_countries_number, busiest_month_flights_from_city, busiest_month_flights_to_city, flights_number_from_city_to_population_ratio, flights_number_to_city_to_population_ratio, total_flights_number_for_city_to_population_ratio) VALUES (6, 'Philadelphia', 40.0077,-75.1339,'United States',5637884,61315,61311,43,42,43,2,2,7,7,0.010875534154303281,0.010874824668262064,0.021750358822565347);
 
 INSERT INTO FLIGHTS (id, origin_city, origin_country, destination_city, destination_country, number_of_flights) VALUES (1, 'Aberdeen', 'United States', 'Minneapolis', 'United States', 671);
-INSERT INTO FLIGHTS (id, origin_city, origin_country, destination_city, destination_country, number_of_flights) VALUES (2, 'Abilene', 'United States', 'Dallas-Fort Worth', 'United States', 2329);
-INSERT INTO FLIGHTS (id, origin_city, origin_country, destination_city, destination_country, number_of_flights) VALUES (3, 'Adak Island', 'United States', 'Anchorage', 'United States', 96);
+INSERT INTO FLIGHTS (id, origin_city, origin_country, destination_city, destination_country, number_of_flights) VALUES (2, 'Minneapolis', 'United States', 'Aberdeen', 'United States', 1340);
+INSERT INTO FLIGHTS (id, origin_city, origin_country, destination_city, destination_country, number_of_flights) VALUES (3, 'Abilene', 'United States', 'Dallas-Fort Worth', 'United States', 2329);
+INSERT INTO FLIGHTS (id, origin_city, origin_country, destination_city, destination_country, number_of_flights) VALUES (4, 'Adak Island', 'United States', 'Anchorage', 'United States', 96);
 
