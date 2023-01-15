@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS cities
     total_flights_number_for_city_to_population_ratio double precision
 );
 
+DROP TABLE IF EXISTS flights;
 CREATE TABLE IF NOT EXISTS flights
 (
     id bigint NOT NULL,
