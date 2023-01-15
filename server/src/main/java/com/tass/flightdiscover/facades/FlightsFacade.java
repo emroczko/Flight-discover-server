@@ -19,7 +19,7 @@ public class FlightsFacade {
 
     public List<Flight> getFlights(FlightRequest request) throws BadRequestException, FlightNotFoundException {
 
-        var reversed = request.getReverse() != null ? request.getReverse() : false;
+        var reversed = request.getReverse() != null && request.getReverse();
         var destination = reversed ? request.getFrom() : request.getTo();
         var source = reversed ? request.getTo() : request.getFrom();
 
