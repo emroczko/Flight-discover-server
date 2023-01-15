@@ -11,5 +11,6 @@ Run the scripts in the following order:
 ## Starting Spring Boot server
 
 From the level of the server directory run:
-> mvnw spring-boot:run
+> gradle bootRun
 
+When the server is running you can go to http://localhost:8080/swagger-ui in web browser to see available endpoints with descriptions and use the convenient graphical interface to send HTTP requests and get responses.
