@@ -1,8 +1,10 @@
 package com.tass.flightdiscover.domain.city;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class CityRequest {
     private Long minPopulation;
     private Long maxPopulation;

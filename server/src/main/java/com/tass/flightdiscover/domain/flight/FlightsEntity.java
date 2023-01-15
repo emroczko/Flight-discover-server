@@ -1,6 +1,8 @@
 package com.tass.flightdiscover.domain.flight;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +10,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(name = "flights")
+@Builder
+@AllArgsConstructor
 public class FlightsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
