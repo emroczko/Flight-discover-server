@@ -2,8 +2,8 @@
 
 ## Data preparation
 
-Download the data from links provided in project documentation and place files in the data/raw directory. After that run scripts from data_preparation directory using command:
-> python script_name.py
+Download the data from links provided in project documentation and place files in the data/raw directory. After that run scripts from main directory using command:
+> python data_preparation/script_name.py
 
 ## PostgreSQL database preparation
 
