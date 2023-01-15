@@ -135,7 +135,7 @@ def get_busiest_month_according_to_flights_to_city(flights_df, city_x, city_y):
     flights_to_city_df = flights_df[
         (flights_df.DESTINATION_CITY_X == city_x) & (flights_df.DESTINATION_CITY_Y == city_y)]
     try:
-        return flights_to_city_df['MONTH'].mode().item()
+        return flights_to_city_df['MONTH'].mode().iloc[:1].item()
     except:
         return -1
 
@@ -143,7 +143,7 @@ def get_busiest_month_according_to_flights_to_city(flights_df, city_x, city_y):
 def get_busiest_month_according_to_flights_from_city(flights_df, city_x, city_y):
     flights_from_city_df = flights_df[(flights_df.ORIGIN_CITY_X == city_x) & (flights_df.ORIGIN_CITY_Y == city_y)]
     try:
-        return flights_from_city_df['MONTH'].mode().item()
+        return flights_from_city_df['MONTH'].mode().iloc[:1].item()
     except:
         return -1
 

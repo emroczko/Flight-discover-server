@@ -1,11 +1,11 @@
 import pandas as pd
 
-FLIGHTS_FILEPATH = '/Users/erykmroczko/Downloads/flights.csv'
+FLIGHTS_FILEPATH = 'data/raw/flights.csv'
 FLIGHTS_FILE_COLUMNS = ['ORIGIN_AIRPORT', 'DESTINATION_AIRPORT']
-AIRPORTS_FILEPATH = '/Users/erykmroczko/Downloads/airports.csv'
+AIRPORTS_FILEPATH = 'data/raw/airports.csv'
 AIRPORTS_FILE_COLUMNS = ['Name', 'City', 'Country', 'IATA']
 
-CONNECTIONS_OUTPUT_FILEPATH = '/Users/erykmroczko/Downloads/connections_data1.csv'
+CONNECTIONS_OUTPUT_FILEPATH = 'data/prepared/connections_data.csv'
 
 airports_df = pd.read_csv(AIRPORTS_FILEPATH, usecols=AIRPORTS_FILE_COLUMNS).dropna()
 airports_df.rename(columns={'Name': 'AIRPORT_NAME',
