@@ -9,15 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class SortingServiceTests {
+class SortingServiceTests {
 
+    private static List<City> cities;
     @Autowired
-    SortingService sortingService;
-
-    static List<City> cities;
+    private SortingService sortingService;
 
     @BeforeAll
     static void prepareData() {
